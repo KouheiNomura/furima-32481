@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
+  before :authenticate_user!, only: :new
 
   def index
+  end
+
+  def new
+    @item = Item.new
   end
 
   private
