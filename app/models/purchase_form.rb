@@ -10,6 +10,9 @@ class PurchaseForm
     validates :phone_number, format: { with: /\A[0-9]{,8}\z/ } 
   end
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+
   def save
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number: phone_number)
     PurchaseRecord.create(user_id: user_id, item_id: item_id)
