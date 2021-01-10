@@ -12,8 +12,12 @@ class Item < ApplicationRecord
       validates :scheduled_delivery_id
     end
   end
+
   belongs_to :user
+  has_one :purchase_record
+
   has_one_attached :image
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :sales_status
