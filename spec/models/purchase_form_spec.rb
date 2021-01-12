@@ -10,6 +10,10 @@ RSpec.describe PurchaseForm, type: :model do
       it '全ての値が正しく入力されていれば保存できる' do
         expect(@purchase_form).to be_valid
       end
+      it 'buildingは空でも保存できる' do
+        @purchase_form.building = ''
+        expect(@purchase_form).to be_valid
+      end
     end
     context '購入記録と住所が保存できないとき' do
       it 'postal_codeが空では保存できない' do
