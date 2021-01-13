@@ -72,7 +72,6 @@ RSpec.describe PurchaseForm, type: :model do
         expect(@purchase_form.errors.full_messages).to include("User can't be blank")
       end
       it 'user_idが空では保存できない' do
-        binding.pry
         @purchase_form.item_id = ''
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Item can't be blank")
