@@ -61,6 +61,11 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include('Phone number is invalid')
       end
+      it 'phone_numberが英数混合では保存できない' do
+        @purchase_form.phone_number = '0901234abcd'
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid')
+      end
       it 'tokenが空では保存できない' do
         @purchase_form.token = nil
         @purchase_form.valid?
@@ -71,7 +76,7 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("User can't be blank")
       end
-      it 'user_idが空では保存できない' do
+      it 'item_idが空では保存できない' do
         @purchase_form.item_id = ''
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Item can't be blank")
